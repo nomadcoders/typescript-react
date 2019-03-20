@@ -1,26 +1,28 @@
 import React, { Component } from "react";
-import { createGlobalStyle } from "styled-components";
 
-class App extends Component {
+interface IState {
+  counter: number;
+}
+
+class App extends Component<{}, IState> {
+  state = {
+    counter: 0
+  };
   render() {
+    const { counter } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        {counter} <button onClick={this.add}>Add</button>
       </div>
     );
   }
+  add = () => {
+    this.setState(prev => {
+      return {
+        counter: prev.counter + 1
+      };
+    });
+  };
 }
 
 export default App;
