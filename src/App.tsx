@@ -1,24 +1,18 @@
 import React, { Component } from "react";
 import Number from "./Number";
-import { Form, Input } from "./Input";
 
 interface IState {
   counter: number;
-  name: string;
 }
 
 class App extends Component<{}, IState> {
   state = {
-    counter: 0,
-    name: ""
+    counter: 0
   };
   render() {
-    const { counter, name } = this.state;
+    const { counter } = this.state;
     return (
       <div>
-        <Form onFormSubmit={this.onFormSubmit}>
-          <Input value={name} onChange={this.onChange} />
-        </Form>
         <Number count={counter} /> <button onClick={this.add}>Add</button>
       </div>
     );
